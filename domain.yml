@@ -1,0 +1,77 @@
+actions:
+- utter_ask_event_location
+- utter_ask_event_name
+- utter_ask_event_online
+- utter_ask_event_pay_type
+- utter_ask_event_time
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+- utter_lunch_information
+- utter_music_informations
+- utter_yoga_date_time
+- utter_yoga_event_category
+- utter_yoga_informations
+- utter_yoga_location_informations
+entities:
+- date_time
+- event_category
+- event_date_time
+- event_identifier
+- event_location
+- event_name
+- thank
+intents:
+- date[preferred_date]
+- date_time
+- events
+- thank
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+responses:
+  utter_ask_event_location:
+  - text: Could you please tell me your preferred event location
+  utter_ask_event_name:
+  - text: what kind of event you like to attend
+  utter_ask_event_online:
+  - text: Are you looking for online events?
+  utter_ask_event_pay_type:
+  - text: Do you prefer free or paid event?
+  utter_ask_event_time:
+  - text: Could you please tell me the event date time
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Bye, have a nice day
+  utter_greet:
+  - text: Hey! How are you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_lunch_information:
+  - text: Here's the results found for cafes and lunch clubs in Edinburgh
+  utter_music_informations:
+  - text: Wow! Do u like music? ok I will list you few music events
+  utter_yoga_date_time:
+  - text: Can you mention the date and time for the event attending
+  utter_yoga_event_category:
+  - text: Here is the entire list of upcomings events
+  utter_yoga_informations:
+  - text: Okay! I'll list you upcoming yoga events information
+  utter_yoga_location_informations:
+  - text: Okay! here's the full list of yoga events in Edinburgh
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
