@@ -1,0 +1,9 @@
+event
+events
+activities
+activity
+meetings
+gettogether
+details
+information
+event happening

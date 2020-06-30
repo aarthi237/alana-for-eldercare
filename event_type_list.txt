@@ -1,0 +1,6 @@
+online
+direct
+inperson
+webinar
+whatsapp
+zoom

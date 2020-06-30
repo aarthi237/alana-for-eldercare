@@ -27,28 +27,120 @@
 - I am interested in [yoga](event_name)
 - Is there any [yoga](event_name) [event](event_identifier) happens in [Edinburgh](event_location)
 - is there any [event](event_identifier)
-- I want to attent music [events](event_identifier)
 - List me [events](event_identifier) in [Edinburgh](event_location)
 - i am good, looking for some [yoga](event_name) [activities](event_identifier)
 - i am looking for some [yoga](event_name) [events](event_identifier)
-- near [edinburgh](event_location)
 - could you please give me [information](event_identifier) about some outdoor [events](event_identifier)
-- around [edinburgh](event_location)
 - can you give me [details](event_identifier) about cafes and lunch clubs
 - can you give me some outdoor [activities](event_identifier)
 - can you give me [information](event_identifier) about some outdoor [activities](event_identifier)
 - I am looking for some [events](event_identifier)
-- May be lunch clubs
 - i am looking for [yoga](event_name) [events](event_identifier)
 - i am looking for [yoga](event_name)
-- in [edinburgh](event_location)
-- free [event](event_identifier)
 - some [events](event_identifier)
 - any [yoga](event_name) [activity](event_identifier)
 - list me some [events](event_identifier)
-- any [yoga](event_name) [activity](event_identifier)
-- free [event](event_identifier)
-- whats your preferred date and time
+- [yoga](event_name)
+- yoga(event_name)
+- [yoga](event_name) [event](event_identifier)
+- I want to attent music [events](event_identifier)
+- Is there any [music](event_name) [event](event_identifier)?
+- I need to go for any [music](event_name) [activity](event_identifier), can u give me a list
+- I am looking for a [music](event_name) [event](event_identifier)
+- Could you please give me [music](event_name) [details](event_identifier)
+- Could you please list me [music](event_name) [information](event_identifier)
+- Is there any [music](event_name) [event happening](event_identifier) around me
+- Do you know any [music](event_name) [event](event_identifier) going on?
+- Can you give me [information](event_identifier) about [music](event_name)?
+- I am planning to do some [music](event_name), can u list me the [activities](event_identifier)
+- I am looking for an [event](event_identifier), may be [music](event_identifier)
+- i am interested in [music](event_name)
+- I am planning to do some [music](event_name)
+- What are the [music](event_name) [events](event_identifier) in the upcoming days
+- I want to find a [music](event_name) class
+- I really want to take a [music](event_name) class
+- I need to do some [music](event_name)
+- what [music](event_name) classes are near me
+- I am interested in [music](event_name)
+- Is there any [music](event_name) [event](event_identifier) happens in [Edinburgh](event_location)
+- i am good, looking for some [music](event_name) [activities](event_identifier)
+- i am looking for some [music](event_name) [events](event_identifier)
+- i am looking for [music](event_name) [events](event_identifier)
+- i am looking for [music](event_name)
+- any [music](event_name) [activity](event_identifier)
+- [music](event_name)
+- music(event_name)
+- [music](event_name) [event](event_identifier)
+- Is there any [coffee morning](event_name) [event](event_identifier)?
+- I need to go for any [coffee morning](event_name) [activity](event_identifier), can u give me a list
+- I am looking for a [coffee morning](event_name) [event](event_identifier)
+- Could you please give me [coffee morning](event_name) [details](event_identifier)
+- Could you please list me [coffee morning](event_name) [information](event_identifier)
+- Is there any [coffee morning](event_name) [event happening](event_identifier) around me
+- Do you know any [coffee morning](event_name) [event](event_identifier) going on?
+- Can you give me [information](event_identifier) about [coffee morning](event_name)?
+- I am planning to do some [coffee morning](event_name), can u list me the [activities](event_identifier)
+- I am looking for an [event](event_identifier), may be [coffee morning](event_identifier)
+- i am interested in [coffee morning](event_name)
+- I am planning to do some [coffee morning](event_name)
+- What are the [coffee morning](event_name) [events](event_identifier) in the upcoming days
+- I want to find a [coffee morning](event_name) class
+- I really want to take a [coffee morning](event_name) class
+- I need to do some [coffee morning](event_name)
+- what [coffee morning](event_name) classes are near me
+- I am interested in [coffee morning](event_name)
+- Is there any [coffee morning](event_name) [event](event_identifier) happens in [Edinburgh](event_location)
+- i am good, looking for some [coffee morning](event_name) [activities](event_identifier)
+- i am looking for some [coffee morning](event_name) [events](event_identifier)
+- i am looking for [coffee morning](event_name) [events](event_identifier)
+- i am looking for [coffee morning](event_name)
+- any [coffee morning](event_name) [activity](event_identifier)
+- [coffee morning](event_name)
+- coffee morning(event_name)
+- [coffee morning](event_name) [event](event_identifier)
+- is there any [violin](event_name) [event]{"entity": "event_identifier", "value": "event_identifier"}
+
+## intent:event_location_intent
+- [in](location_identifier) [edinburgh](event_location)
+- [near](location_identifier) [edinburgh](event_location)
+- [around](location_identifier) [edinburgh](event_location)
+- [at](location_identifier) [edinburgh](event_location)
+- [in](location_identifier) [glasgow](event_location)
+- [near](location_identifier) [glasgow](event_location)
+- [around](location_identifier) [glasgow](event_location)
+- [at](location_identifier) [glasgow](event_location)
+- [in](location_identifier) [livingston](event_location)
+- [near](location_identifier) [livingston](event_location)
+- [around](location_identifier) [livingston](event_location)
+- [at](location_identifier) [livingston](event_location)
+- [around](location_identifier) [roseburn](event_location)
+
+## intent:event_cost_intent
+- [free](event_cost) [event](event_identifier)
+- [free](event_cost) one
+- [paid](event_cost) one
+- [donation](event_cost) [event]{"entity": "event_identifier", "value": "event_identifier"}
+
+## intent:event_type_intent
+- [online](event_type) [event](event_identifier)
+- [direct](event_type) one
+- [live](event_type) one
+- [live](event_type) [event]{"entity": "event_identifier", "value": "event_identifier"}
+
+## intent:event_datetime_intent
+- [monday](date_time)
+- [tuesday](date_time)
+- [wednesday](date_time)
+- [thursday](date_time)
+- [friday](date_time)
+- [saturday](date_time)
+- [sunday](date_time)
+
+## intent:thank
+- [thank you](thank)
+- [thanks](thank)
+- oh [thank you](thank)
+- ok [thank you](thank)
 
 ## intent:goodbye
 - bye
@@ -71,69 +163,23 @@
 - no way
 - not really
 
-## intent:mood_great
-- perfect
-- very good
-- great
-- amazing
-- wonderful
-- I am feeling very good
-- I am great
-- I'm good
-
-## intent:mood_unhappy
-- sad
-- very sad
-- unhappy
-- bad
-- very bad
-- awful
-- terrible
-- not very good
-- extremely sad
-- so sad
-
-## intent:bot_challenge
-- are you a bot?
-- are you a human?
-- am I talking to a bot?
-- am I talking to a human?
-
-## intent:date_time
-- [Monday](date_time)
-- [Tuesday](date_time)
-- sunday afternoon
-
-## intent:thank
-- [thank you](thank)
-- [thanks](thank)
-- oh [thank you](thank)
-- ok [thank you](thank)
-
-## intent:date[preferred_date]
-- what is your preferred date and time
-
-## lookup:event_location
-- Edinburgh
-- Glasgow
-
-## lookup: event_name
-- yoga
-- music
-- coffee morning
-- cafes and lunch clubs
-- exercise and physical activity
-- tea dance
-- befriending
-- walking
-
-## lookup: event_identifier
+## synonym:event_identifier
 - event
 - events
-- activities
 - activity
-- meetings
-- gettogether
-- details
-- information
-- event happening
+- activities
+
+## lookup:event_name
+  event_name_list.txt
+
+## lookup:event_location
+  event_location_list.txt
+
+## lookup:event_type
+  event_type_list.txt
+
+## lookup:event_cost
+  event_cost_list.txt
+
+## lookup:event_identifier
+  event_identifier_list.txt
