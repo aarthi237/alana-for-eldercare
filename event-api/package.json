@@ -1,0 +1,19 @@
+{
+  "name": "event-api",
+  "version": "1.0.0",
+  "description": "Event provider api for rasa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon *js"
+  },
+  "author": "Arthidevi Balavignesh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "dev-dependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
