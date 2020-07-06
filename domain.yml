@@ -5,20 +5,23 @@ actions:
 - utter_ask_event_online
 - utter_ask_event_pay_type
 - utter_ask_event_time
+- utter_ask_event_confirm
+- utter_ask_event_cancel
 - utter_did_that_help
 - utter_goodbye
 - utter_greet
 - utter_happy
 - utter_iamabot
 entities:
-- date_time
 - event_category
 - event_cost
 - event_date_time
 - event_identifier
 - event_location
 - event_name
+- event_no
 - event_type
+- event_yes
 - location_identifier
 - thank
 intents:
@@ -29,6 +32,8 @@ intents:
 - date[preferred_date]
 - date_time
 - event_datetime_intent
+- event_confirm
+- event_cancel
 - thank
 - greet
 - goodbye
@@ -46,6 +51,10 @@ responses:
   - text: Do you prefer free or paid event?
   utter_ask_event_time:
   - text: Could you please tell me the event date time
+  utter_ask_event_confirm:
+  - text: Shall I book a place for you?  
+  utter_ask_event_cancel:
+  - text: Would like to look for some other events
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
@@ -62,9 +71,15 @@ session_config:
 slots:
   event_cost:
     type: text
+  event_date_time:
+    type: text
   event_location:
     type: text
   event_name:
     type: text
   event_type:
     type: text
+  event_yes:
+    type: text
+  event_no:
+    type: text  

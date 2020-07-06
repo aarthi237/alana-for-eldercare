@@ -99,6 +99,8 @@
 - coffee morning(event_name)
 - [coffee morning](event_name) [event](event_identifier)
 - is there any [violin](event_name) [event]{"entity": "event_identifier", "value": "event_identifier"}
+- i am looking for [music](event_name) [events](event_identifier:event_identifier)
+- [yoga](event_name) [evnts](event_identifier)
 
 ## intent:event_location_intent
 - [in](location_identifier) [edinburgh](event_location)
@@ -113,28 +115,80 @@
 - [near](location_identifier) [livingston](event_location)
 - [around](location_identifier) [livingston](event_location)
 - [at](location_identifier) [livingston](event_location)
+- [in](location_identifier) [roseburn](event_location)
+- [near](location_identifier) [roseburn](event_location)
 - [around](location_identifier) [roseburn](event_location)
+- [at](location_identifier) [roseburn](event_location)
+- [in](location_identifier) [dalry](event_location)
+- [near](location_identifier) [dalry](event_location)
+- [around](location_identifier) [dalry](event_location)
+- [at](location_identifier) [dalry](event_location)
+- [in](location_identifier) [curries](event_location)
+- [near](location_identifier) [curries](event_location)
+- [around](location_identifier) [curries](event_location)
+- [at](location_identifier) [curries](event_location)
+- [in](location_identifier) [london](event_location)
+- [near](location_identifier) [london](event_location)
+- [around](location_identifier) [london](event_location)
+- [at](location_identifier) [london](event_location)
+- [in](location_identifier) [manchester](event_location)
+- [near](location_identifier) [manchester](event_location)
+- [around](location_identifier) [manchester](event_location)
+- [at](location_identifier) [manchester](event_location)
+- [in](location_identifier) [haymarket](event_location)
+- [near](location_identifier) [haymarket](event_location)
+- [around](location_identifier) [haymarket](event_location)
+- [at](location_identifier) [haymarket](event_location)
+- [in](location_identifier) [leith](event_location)
+- [near](location_identifier) [leith](event_location)
+- [around](location_identifier) [leith](event_location)
+- [at](location_identifier) [leith](event_location)
 
 ## intent:event_cost_intent
 - [free](event_cost) [event](event_identifier)
 - [free](event_cost) one
 - [paid](event_cost) one
-- [donation](event_cost) [event]{"entity": "event_identifier", "value": "event_identifier"}
+- [donation](event_cost) [event](event_identifier)
 
 ## intent:event_type_intent
 - [online](event_type) [event](event_identifier)
 - [direct](event_type) one
 - [live](event_type) one
-- [live](event_type) [event]{"entity": "event_identifier", "value": "event_identifier"}
+- [direct](event_type) [event](event_identifier)
+- [live](event_type) [event](event_identifier)
 
 ## intent:event_datetime_intent
-- [monday](date_time)
-- [tuesday](date_time)
-- [wednesday](date_time)
-- [thursday](date_time)
-- [friday](date_time)
-- [saturday](date_time)
-- [sunday](date_time)
+- [monday](event_date_time)
+- [tuesday](event_date_time)
+- [wednesday](event_date_time)
+- [thursday](event_date_time)
+- [friday](event_date_time)
+- [saturday](event_date_time)
+- [sunday](event_date_time)
+- [coming week](event_date_time)
+- [weekend](event_date_time)
+- [morning](event_date_time)
+- [afternoon](event_date_time)
+- [evening](event_date_time)
+- [noon](event_date_time)
+- [every week](event_date_time)
+- [mornings](event_date_time)
+- [evenings](event_date_time)
+
+## intent:event_confirm
+- [yes](event_yes)
+- [ok](event_yes)
+- [proceed](event_yes)
+- [book it](event_yes)
+- [register please](event_yes)
+- [regiter](event_yes)
+- [yes please](event_yes)
+
+## intent:event_cancel
+- [cancel](event_no)
+- [not really](event_no)
+- [no thanks](event_no)
+- [no](event_no)
 
 ## intent:thank
 - [thank you](thank)

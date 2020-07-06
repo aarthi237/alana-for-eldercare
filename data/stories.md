@@ -24,3 +24,15 @@
 * event_cost_intent
   - action_event_details
 
+## event confirm
+* event_confirm
+  - action_event_details
+
+## event cancel
+* event_cancel
+  - action_event_details
+
+## event date time
+* event_datetime_intent
+  - action_event_details
+    

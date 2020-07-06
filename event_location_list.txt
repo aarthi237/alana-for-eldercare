@@ -1,3 +1,21 @@
 edinburgh
 glasgow
 livingston
+roseburn
+dalry
+curries
+london
+manchester
+haymarket
+leith
+gyle center
+lauriston place
+city center
+balgreen
+saughton house
+bankhead
+murrayfiled
+yorkplace
+pricess street
+dalry gate
+sinclair place
