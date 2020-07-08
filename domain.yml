@@ -24,6 +24,7 @@ entities:
 - event_yes
 - location_identifier
 - thank
+- spiltpoint
 intents:
 - events
 - event_type_intent
@@ -40,6 +41,7 @@ intents:
 - affirm
 - deny
 - mood_great
+- mid_utterance
 responses:
   utter_ask_event_location:
   - text: Could you please tell me your preferred event location
@@ -55,6 +57,8 @@ responses:
   - text: Shall I book a place for you?  
   utter_ask_event_cancel:
   - text: Would like to look for some other events
+  utter_ask_mid_utterance:
+  - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:

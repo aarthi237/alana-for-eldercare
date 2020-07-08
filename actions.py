@@ -12,28 +12,35 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset
+import requests
+
 
 class ActionHelloWorld(Action):
-
     def name(self) -> Text:
         return "action_hello_world"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
 
         dispatcher.utter_message(text="Hello World!")
 
         return []
 
-class ActionEventDetails(Action):
 
+class ActionEventDetails(Action):
     def name(self) -> Text:
         return "action_event_details"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
         event_name_slot = tracker.get_slot("event_name")
         event_location_slot = tracker.get_slot("event_location")
         event_type_slot = tracker.get_slot("event_type")
@@ -42,9 +49,16 @@ class ActionEventDetails(Action):
         event_yes_slot = tracker.get_slot("event_yes")
         event_no_slot = tracker.get_slot("event_no")
 
-        entities = tracker.latest_message['entities']
-        print(*entities, sep = ", ")
-        
+        event_params = {
+            "event_name": event_name_slot,
+            "event_location": event_location_slot,
+            "event_type": event_type_slot,
+            "event_cost": event_cost_slot,
+            "event_date_time": event_date_time_slot
+        }
+        entities = tracker.latest_message["entities"]
+        print(*entities, sep=", ")
+
         if not event_name_slot:
             dispatcher.utter_message("Which event you want to attend?")  
         elif not event_location_slot:
@@ -60,11 +74,26 @@ class ActionEventDetails(Action):
         elif event_yes_slot:
             dispatcher.utter_message("OK I will list the {} event from {}". format(event_name_slot, event_location_slot))
             dispatcher.utter_message("Here are the results found for {} and {} based event on {} ". format(event_cost_slot, event_type_slot, event_date_time_slot))
-            print("fetch from api")
-            dispatcher.utter_message("There is a {} event on {} in {} around 4 pm at the lauriston hall, george street.". format(event_name_slot, event_date_time_slot, event_location_slot))
-            dispatcher.utter_message("Ok I have booked for you")
-            return [AllSlotsReset()]
+
+            response = requests.get(
+                "http://localhost:3000/events", params=event_params
+            ).json()
+            if len(response["event_res_text"]) > 0:
+                for data in response["event_res_text"]:
+                    print(data)
+                    dispatcher.utter_message(data)
+                dispatcher.utter_message("Ok I have booked for you")
+                dispatcher.utter_message("Do you want me to set the reminder for you?")
+                
+        elif event_yes_slot:
+                dispatcher.utter_message("Ok, I have set the reminder for you") 
+                dispatcher.utter_message("Are you interested in any other activities?") 
+        elif event_yes_slot:
+                dispatcher.utter_message("Which event you want to attend") 
+                         
+                return [AllSlotsReset()]
         elif event_no_slot:
+            dispatcher.utter_message("Here are the results found for {} and {} based event on {} ". format(event_cost_slot, event_type_slot, event_date_time_slot))
             dispatcher.utter_message("Would you like to look for some other events to participate")      
             return [AllSlotsReset()]
         return []

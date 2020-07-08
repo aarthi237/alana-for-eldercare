@@ -35,4 +35,9 @@
 ## event date time
 * event_datetime_intent
   - action_event_details
+
+## event_mid_utterance
+* mid_utterance
+  - utter_ask_mid_utterance
+
     

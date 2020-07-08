@@ -102,6 +102,24 @@
 - i am looking for [music](event_name) [events](event_identifier:event_identifier)
 - [yoga](event_name) [evnts](event_identifier)
 
+## intent:mid_utterance
+- can you tell me [the](spiltpoint)
+- can you list [the](spiltpoint)
+- I want [to](spiltpoint)
+- I want to know [about](spiltpoint)
+- I want to know [about the](spiltpoint)
+- I really think [of](spiltpoint)
+- I am planning to [go](spiltpoint)
+
+## lookup:splitpoint
+- the
+- to
+- of
+- go
+- about
+- me
+
+
 ## intent:event_location_intent
 - [in](location_identifier) [edinburgh](event_location)
 - [near](location_identifier) [edinburgh](event_location)
@@ -156,6 +174,7 @@
 - [live](event_type) one
 - [direct](event_type) [event](event_identifier)
 - [live](event_type) [event](event_identifier)
+- [virtual](event_type)[event](event_identifier)
 
 ## intent:event_datetime_intent
 - [monday](event_date_time)
@@ -181,7 +200,7 @@
 - [proceed](event_yes)
 - [book it](event_yes)
 - [register please](event_yes)
-- [regiter](event_yes)
+- [register](event_yes)
 - [yes please](event_yes)
 
 ## intent:event_cancel
