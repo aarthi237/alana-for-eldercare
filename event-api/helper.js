@@ -1,6 +1,8 @@
 const {
-    getEventsDataFromDb
+    getEventsDataFromDb,
+    insertEvent
 } = require('./eventdata')
+const moment = require('moment')
 
 exports.getEvents = async (event_name) => {
     let data = await getEventsDataFromDb(event_name);
@@ -26,3 +28,13 @@ exports.getEvents = async (event_name) => {
     }
     return event_res;
 };
+
+exports.addEvent = async (param) => {
+    const eId = param.event_id ? param.event_id : 1
+    const eLocId = param.location_id ? param.location_id : 1;
+    const type = param.type ? param.type : 'online';
+    const payType = param.pay_type ? param.pay_type : 'free';
+    const cost = param.cost ? param.cost : 0;
+    const dateTime = param.date_time ? moment(param.date_time, "D/M/YYYY H:mm").unix() : Date.now();
+    return await insertEvent(eId, eLocId, type, payType, cost, dateTime);
+}

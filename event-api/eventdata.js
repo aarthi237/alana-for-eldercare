@@ -16,6 +16,17 @@ exports.getEventsDataFromDb = async (event_name) => {
     }
 };
 
+
+exports.insertEvent = async (eventId, eventLocId, type, payType, cost, dateTime) => {
+    await db.run(`INSERT INTO events VALUES(?,?,?,?,?,?)`, [eventId, eventLocId, type, payType, cost, dateTime], function (err) {
+        if (err) {
+            return console.log(err.message);
+        }
+        // get the last insert id
+        return `A row has been inserted with rowid ${this.lastID}`;
+    });
+}
+
 get_async = (sql) => {
     return new Promise((resolve, reject) => {
         db.all(sql, [], (err, row) => {

@@ -1,0 +1,1 @@
+localhost:3000/event?event_id=3&location_id=10&type=direct&pay_type=free&cost=0&date_time=25/07/2020 18:30
