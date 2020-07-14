@@ -16,14 +16,15 @@ app.get('/', (req, res) => {
 })
 app.get('/events', async (req, res) => {
     let event_res = {}
-    const data = await getEvents(req.query.event_name)
+    const data = await getEvents(req.query)
     res.status(200).json(data)
 })
 
 app.post('/event', async (req, res) => {
     let event_res = {}
     const data = await addEvent(req.query)
-    res.status(200).json(data)
+    console.log(data)
+    res.status(200).send(data)
 })
 
 app.listen(3000, function () {

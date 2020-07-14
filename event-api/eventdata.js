@@ -1,12 +1,15 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./events_data.db');
 
-exports.getEventsDataFromDb = async (event_name) => {
+exports.getEventsDataFromDb = async (eName, locName, type, payType, cost, dateRange) => {
     var sql = `select en.name, e.type,e.payment_type, e.cost,datetime(e.datetime,'unixepoch') as datetime,
         en.category, l.city, l.address from events as e, event_name as en, location as 
         l where e.event_id = en.event_id AND e.location_id = l.location_id 
-        AND en.name = "${event_name}"`
+        AND en.name LIKE "${eName}" AND l.city LIKE "${locName}" AND e.type LIKE "${type}"
+        AND e.payment_type LIKE "${payType}" AND e.cost = ${cost} AND e.datetime >= ${dateRange[0]}
+        AND e.datetime <= ${dateRange[1]}`
     try {
+        console.log(sql)
         const rows = await get_async(sql);
         console.log(rows);
         return Array.isArray(rows) ? rows : [rows]
@@ -18,12 +21,16 @@ exports.getEventsDataFromDb = async (event_name) => {
 
 
 exports.insertEvent = async (eventId, eventLocId, type, payType, cost, dateTime) => {
-    await db.run(`INSERT INTO events VALUES(?,?,?,?,?,?)`, [eventId, eventLocId, type, payType, cost, dateTime], function (err) {
-        if (err) {
-            return console.log(err.message);
-        }
-        // get the last insert id
-        return `A row has been inserted with rowid ${this.lastID}`;
+    return new Promise((resolve, reject) => {
+        db.run(`INSERT INTO events VALUES(?,?,?,?,?,?)`,
+            [eventId, eventLocId, type, payType, cost, dateTime],
+            function (err) {
+                if (err) {
+                    reject(err);
+                }
+                console.log(this.lastID);
+                resolve(`A row has been inserted with rowid ${this.lastID}`);
+            });
     });
 }
 
