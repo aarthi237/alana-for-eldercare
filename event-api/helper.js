@@ -9,15 +9,16 @@ exports.getEvents = async (param) => {
     const locName = param.location_name ? param.location_name : "%";
     const type = param.type ? param.type : '%';
     const payType = param.pay_type ? param.pay_type : '%';
-    const cost = param.cost ? param.cost : 0;
+    //const cost = param.cost ? param.cost : 0;
     const dateTime = param.event_datetime ? param.event_datetime : "any";
     const dateRange = translateDate(dateTime);
-    let data = await getEventsDataFromDb(eName, locName, type, payType, cost, dateRange);
+    let data = await getEventsDataFromDb(eName, locName, type, payType, dateRange);
     //console.log(data)
     let event_res_text = []
+    let result = true;
     if (data.length && data.length > 0) {
-        event_res_text.push("There are few events happening with your requested crieteria.");
-        event_res_text.push("Let me list for you");
+        //event_res_text.push("There are few events happening with your requested crieteria.");
+        //event_res_text.push("Let me list for you");
         data.forEach(eventData => {
             const dateTime = new Date(eventData.datetime)
             const month = dateTime.toLocaleString('default', {
@@ -28,10 +29,12 @@ exports.getEvents = async (param) => {
         });
     } else {
         event_res_text.push("Sorry there is no event for your request");
+        result = false
     }
 
     event_res = {
-        event_res_text: event_res_text
+        event_res_text: event_res_text,
+        result: result
     }
     return event_res;
 };
@@ -47,6 +50,7 @@ exports.addEvent = async (param) => {
 }
 
 function translateDate(dateStr) {
+    console.log(dateStr)
     dateStr = dateStr.replace(/\s+/g, '').toLowerCase();
     let startday = moment().day()
     let endday = moment().day()

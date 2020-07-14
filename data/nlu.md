@@ -99,7 +99,7 @@
 - coffee morning(event_name)
 - [coffee morning](event_name) [event](event_identifier)
 - is there any [violin](event_name) [event]{"entity": "event_identifier", "value": "event_identifier"}
-- i am looking for [music](event_name) [events](event_identifier:event_identifier)
+- i am looking for [music](event_name) [events]{"entity": "event_identifier", "value": "event_identifier"}
 - [yoga](event_name) [evnts](event_identifier)
 
 ## intent:mid_utterance
@@ -174,7 +174,7 @@
 - [live](event_type) one
 - [direct](event_type) [event](event_identifier)
 - [live](event_type) [event](event_identifier)
-- [virtual](event_type)[event](event_identifier)
+- [virtual](event_type) [event](event_identifier)
 
 ## intent:event_datetime_intent
 - [monday](event_date_time)
@@ -243,16 +243,16 @@
 - activities
 
 ## lookup:event_name
-  event_name_list.txt
+event_name_list.txt
 
 ## lookup:event_location
-  event_location_list.txt
+event_location_list.txt
 
 ## lookup:event_type
-  event_type_list.txt
+event_type_list.txt
 
 ## lookup:event_cost
-  event_cost_list.txt
+event_cost_list.txt
 
 ## lookup:event_identifier
-  event_identifier_list.txt
+event_identifier_list.txt
