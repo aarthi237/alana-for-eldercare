@@ -13,6 +13,7 @@ actions:
 - utter_happy
 - utter_iamabot
 - utter_feedback
+- utter_welcome
 entities:
 - event_category
 - event_cost
@@ -61,7 +62,7 @@ responses:
   utter_ask_mid_utterance:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_ask_event_interest:
-  - text: Are you interested on any events around you?
+  - text: Would you like to take part in any social events around you? for eg., yoga, music, coffee morning
   utter_feedback:
   - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLSfVMR2ebdYS36cIZ9HKkCy9ze8_Y3g71u6lxSn-r3-5fttqyg/viewform
   utter_did_that_help:
@@ -69,9 +70,11 @@ responses:
   utter_goodbye:
   - text: Bye, have a nice day
   utter_greet:
-  - text: Hey! How are you?
+  - text: Hey! How are you today?
   utter_happy:
   - text: Great, carry on!
+  utter_welcome:
+  - text: You are welocme.
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 session_config:

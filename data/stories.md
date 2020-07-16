@@ -4,6 +4,11 @@
 * mood_great
   - utter_ask_event_interest
 
+## thank you
+* thank
+  - utter_welcome
+
+
 ## say goodbye
 * goodbye
   - utter_goodbye

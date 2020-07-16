@@ -24,7 +24,7 @@ exports.getEvents = async (param) => {
             const month = dateTime.toLocaleString('default', {
                 month: 'long'
             });
-            event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
+            event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
             event_res_text.push(event_desc)
         });
     } else {
