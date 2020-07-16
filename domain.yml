@@ -50,10 +50,24 @@ intents:
 responses:
   utter_ask_event_location:
   - text: Could you please tell me your preferred event location
+  - text: Can you provide the location?
+  - text: your preferred location please
+  - text: which location you are looking for?
+  - text: shall I know your preferred location
+  - text: Let me know your preference in location.
   utter_ask_event_name:
-  - text: what kind of event you like to attend
+  - text: what kind of event you like to attend?
+  - text: Please provide me with the event you want to attend
+  - text: Tell me which event you wish to attend
+  - text: let me know your interested event to attend
+  - text: Could you please tell me the event you want to take part
+  - text: It would be great if you mention which event you wish to attend
   utter_ask_event_online:
   - text: Are you looking for online events?
+  - text: Do you prefer online or direct events?
+  - text: Please tell me you want online or direct events
+  - text: You wish to attend online or direct events?
+  - text: Let me know which type of events you wish to attend either online or direct events?
   utter_ask_event_pay_type:
   - text: Do you prefer free or paid event?
   utter_ask_event_time:
@@ -62,10 +76,16 @@ responses:
   - text: Shall I book a place for you?  
   utter_ask_event_cancel:
   - text: Would like to look for some other events
+  - text: Do you wish to search for some other events?
+  - text: Do you have any other preference of events to attend?
+  - text: Would you be interested in any other events?
   utter_ask_mid_utterance:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_ask_event_interest:
   - text: Would you like to take part in any social events around you? for eg., yoga, music, coffee morning
+  - text: Are you interested in attending any social events around you? For eg., yoga, coffee morning, music?
+  - text: Do you prefer to take part in any social events around you? For eg., music, coffee morning, yoga?
+  - text: Some social events are happening around, do you wish to take part? For eg., coffee morning, music, yoga
   utter_feedback:
   - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLSfVMR2ebdYS36cIZ9HKkCy9ze8_Y3g71u6lxSn-r3-5fttqyg/viewform
   utter_did_that_help:

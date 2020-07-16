@@ -66,6 +66,7 @@ class ActionEventDetails(Action):
             dispatcher.utter_message(
                 "OK i will book the {} event for you".format(event_number)
             )
+            dispatcher.utter_message("Would you be interested in any other events")
             return [AllSlotsReset()]
 
         if event_no_slot:
@@ -118,7 +119,7 @@ class ActionEventDetails(Action):
                 )
                 for data in response["event_res_text"]:
                     print(i, " ", data)
-                    message = "{} {}".format(i, data)
+                    message = "{}) {}".format(i, data)
                     dispatcher.utter_message(message)
                     i = i + 1
                 if (len(response["event_res_text"])) > 1:
