@@ -179,6 +179,7 @@
 - [free](event_cost) one
 - [paid](event_cost) one
 - [donation](event_cost) [event](event_identifier)
+- [both](event_cost)
 
 ## intent:event_type_intent
 - [online](event_type) [event](event_identifier)
@@ -187,10 +188,11 @@
 - [direct](event_type) [event](event_identifier)
 - [live](event_type) [event](event_identifier)
 - [virtual](event_type) [event](event_identifier)
+- [both](event_type)
 
 ## intent:event_datetime_intent
-- [monday](event_date_time)
-- [tuesday](event_date_time)
+- [monday](event_date_time) 
+- [tuesday](event_date_time) 
 - [wednesday](event_date_time)
 - [thursday](event_date_time)
 - [friday](event_date_time)
@@ -198,13 +200,7 @@
 - [sunday](event_date_time)
 - [coming week](event_date_time)
 - [weekend](event_date_time)
-- [morning](event_date_time)
-- [afternoon](event_date_time)
-- [evening](event_date_time)
-- [noon](event_date_time)
 - [every week](event_date_time)
-- [mornings](event_date_time)
-- [evenings](event_date_time)
 - [tomorrow](event_date_time)
 - [today](event_date_time)
 - [day after tomorrow](event_date_time)
@@ -212,6 +208,17 @@
 - [any date](event_date_time)
 - [all day](event_date_time)
 - [all date](event_date_time)
+- [monday](event_date_time) [morning](time_session)
+- [tuesday](event_date_time) [afternoon](time_session)
+- [wednesday](event_date_time) [evening](time_session)
+- [thursday](event_date_time) [noon](time_session)
+- [friday](event_date_time)
+- [mornings](time_session)
+- [evenings](time_session)
+- [morning](time_session)
+- [afternoon](time_session)
+- [evening](time_session)
+- [noon](time_session)
 
 ## intent:event_confirm
 - [yes](event_yes)

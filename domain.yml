@@ -29,6 +29,7 @@ entities:
 - thank
 - spiltpoint
 - num_identifier
+- time_session
 intents:
 - events
 - event_type_intent
@@ -102,4 +103,6 @@ slots:
   event_result:
     type: list
   num_identifier:
+    type: text
+  time_session:
     type: text

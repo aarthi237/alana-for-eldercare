@@ -50,6 +50,7 @@ class ActionEventDetails(Action):
         event_yes_slot = tracker.get_slot("event_yes")
         event_no_slot = tracker.get_slot("event_no")
         event_number = tracker.get_slot("num_identifier")
+        event_session_slot = tracker.get_slot("time_session")
 
         if event_result and len(event_result) > 0 and event_yes_slot:
             print("herer")
@@ -70,19 +71,22 @@ class ActionEventDetails(Action):
         if event_no_slot:
             dispatcher.utter_message("OK Have a Nice day, Bye Bye")
             return [AllSlotsReset()]
-        
+        print(event_session_slot)
         event_params = {
             "event_name": event_name_slot,
             "location_name": event_location_slot,
             "type": event_type_slot,
             "pay_type": event_cost_slot,
             "event_datetime": event_date_time_slot,
+            "event_session": event_session_slot,
         }
         entities = tracker.latest_message["entities"]
         print(*entities, sep=", ")
 
         if not event_name_slot:
-            dispatcher.utter_message("Which event you wish to attend? for eg., yoga, music, coffee morning")
+            dispatcher.utter_message(
+                "Which event you wish to attend? for eg., yoga, music, coffee morning"
+            )
         elif not event_type_slot:
             dispatcher.utter_message("Are you looking for online or direct event?")
         elif not event_location_slot and event_type_slot == "direct":
@@ -91,7 +95,7 @@ class ActionEventDetails(Action):
             )
         elif not event_cost_slot:
             dispatcher.utter_message("Are you looking for free or paid event?")
-        elif not event_date_time_slot:
+        elif not event_date_time_slot and not event_session_slot:
             dispatcher.utter_message(
                 "Can you tell me on which day you are looking for?"
             )
@@ -128,7 +132,9 @@ class ActionEventDetails(Action):
                 dispatcher.utter_message(
                     "Sorry there are no events for your search criteria"
                 )
-                dispatcher.utter_message("would you like to search for a different event")
+                dispatcher.utter_message(
+                    "would you like to search for a different event"
+                )
                 return [AllSlotsReset()]
         return []
 

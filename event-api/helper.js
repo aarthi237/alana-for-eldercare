@@ -5,12 +5,14 @@ const {
 const moment = require('moment')
 
 exports.getEvents = async (param) => {
+    console.log(param);
     const eName = translateName(param.event_name);
     const locName = translateLocName(param.location_name);
     const type = param.type ? param.type : '%';
     const payType = param.pay_type ? param.pay_type : '%';
     const dateRange = translateDate(param.event_datetime);
-
+    const daySession = translateDaySession(param.event_session);
+    console.log(daySession)
     let data = await getEventsDataFromDb(eName, locName, type, payType, dateRange);
     let event_res_text = []
     let result = true;
@@ -20,12 +22,23 @@ exports.getEvents = async (param) => {
             const month = dateTime.toLocaleString('default', {
                 month: 'long'
             });
-            event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
-            event_res_text.push(event_desc)
+            if (daySession != null) {
+                console.log(25)
+                console.log(dateTime.getHours())
+                if (daySession[0] <= dateTime.getHours() && daySession[1] >= dateTime.getHours()) {
+                    event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
+                    event_res_text.push(event_desc)
+                }
+            } else {
+                event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
+                event_res_text.push(event_desc)
+            }
         });
     } else {
         event_res_text = []
-        result = false
+    }
+    if (event_res_text.length == 0) {
+        result = false;
     }
 
     event_res = {
@@ -174,4 +187,38 @@ function translateLocName(locName) {
         return '%'
     }
     return locName;
+}
+
+function translateDaySession(daySession) {
+    if (!daySession) {
+        return null
+    }
+    daySession = trimString(daySession);
+    let starttime = 0
+    let endtime = 23
+    switch (daySession) {
+        case 'morning':
+        case 'mornings':
+            starttime = 0;
+            endtime = 11;
+            break;
+        case 'afternoon':
+        case 'afternoons':
+        case 'noon':
+        case 'noons':
+            starttime = 12;
+            endtime = 15;
+            break;
+        case 'evening':
+        case 'evenings':
+            starttime = 16;
+            endtime = 23;
+            break;
+        default:
+            starttime = 0;
+            endtime = 23;
+            break;
+    }
+    return [starttime, endtime];
+
 }
