@@ -12,6 +12,7 @@ actions:
 - utter_greet
 - utter_happy
 - utter_iamabot
+- utter_feedback
 entities:
 - event_category
 - event_cost
@@ -61,6 +62,8 @@ responses:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_ask_event_interest:
   - text: Are you interested on any events around you?
+  utter_feedback:
+  - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLSfVMR2ebdYS36cIZ9HKkCy9ze8_Y3g71u6lxSn-r3-5fttqyg/viewform
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
