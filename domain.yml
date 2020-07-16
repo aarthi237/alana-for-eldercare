@@ -14,6 +14,7 @@ actions:
 - utter_iamabot
 - utter_feedback
 - utter_welcome
+- utter_mood_response
 entities:
 - event_category
 - event_cost
@@ -44,6 +45,7 @@ intents:
 - mood_great
 - mid_utterance
 - event_number_intent
+- mood_check
 responses:
   utter_ask_event_location:
   - text: Could you please tell me your preferred event location
@@ -75,8 +77,10 @@ responses:
   - text: Great, carry on!
   utter_welcome:
   - text: You are welocme.
+  utter_mood_response:
+  - text: I am great. Thank you.
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: I am a event bot, powered by Rasa.
 session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 60

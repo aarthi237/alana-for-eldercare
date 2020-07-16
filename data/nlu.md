@@ -205,6 +205,13 @@
 - [every week](event_date_time)
 - [mornings](event_date_time)
 - [evenings](event_date_time)
+- [tomorrow](event_date_time)
+- [today](event_date_time)
+- [day after tomorrow](event_date_time)
+- [any day](event_date_time)
+- [any date](event_date_time)
+- [all day](event_date_time)
+- [all date](event_date_time)
 
 ## intent:event_confirm
 - [yes](event_yes)
@@ -242,6 +249,13 @@
 - terible
 - fine
 - alright
+
+## intent:mood_check
+- how are you
+- how are you doing
+- how are you today
+- are you ok
+- how is your day
 
 ## synonym:event_identifier
 - event

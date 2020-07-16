@@ -4,10 +4,16 @@
 * mood_great
   - utter_ask_event_interest
 
+## happy path
+* greet
+  - utter_greet
+* mood_check
+  - utter_mood_response
+  - utter_ask_event_interest
+
 ## thank you
 * thank
   - utter_welcome
-
 
 ## say goodbye
 * goodbye

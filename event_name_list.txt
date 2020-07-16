@@ -15,3 +15,5 @@ coding
 software
 singing
 movie show
+any event
+all event

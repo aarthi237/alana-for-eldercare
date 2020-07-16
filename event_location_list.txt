@@ -19,3 +19,6 @@ yorkplace
 pricess street
 dalry gate
 sinclair place
+any place
+any location
+any city
