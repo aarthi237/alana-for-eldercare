@@ -25,6 +25,7 @@ entities:
 - location_identifier
 - thank
 - spiltpoint
+- num_identifier
 intents:
 - events
 - event_type_intent
@@ -38,10 +39,9 @@ intents:
 - thank
 - greet
 - goodbye
-- affirm
-- deny
 - mood_great
 - mid_utterance
+- event_number_intent
 responses:
   utter_ask_event_location:
   - text: Could you please tell me your preferred event location
@@ -59,6 +59,8 @@ responses:
   - text: Would like to look for some other events
   utter_ask_mid_utterance:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
+  utter_ask_event_interest:
+  - text: Are you interested on any events around you?
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
@@ -86,4 +88,8 @@ slots:
   event_yes:
     type: text
   event_no:
-    type: text  
+    type: text
+  event_result:
+    type: list
+  num_identifier:
+    type: text

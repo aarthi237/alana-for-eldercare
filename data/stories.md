@@ -2,7 +2,7 @@
 * greet
   - utter_greet
 * mood_great
-  - utter_happy
+  - utter_ask_event_interest
 
 ## say goodbye
 * goodbye
@@ -30,6 +30,10 @@
 
 ## event cancel
 * event_cancel
+  - action_event_details
+
+## event number
+* event_number_intent
   - action_event_details
 
 ## event date time

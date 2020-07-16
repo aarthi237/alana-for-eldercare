@@ -100,7 +100,14 @@
 - [coffee morning](event_name) [event](event_identifier)
 - is there any [violin](event_name) [event]{"entity": "event_identifier", "value": "event_identifier"}
 - i am looking for [music](event_name) [events]{"entity": "event_identifier", "value": "event_identifier"}
-- [yoga](event_name) [evnts](event_identifier)
+- [yoga](event_name) [events](event_identifier)
+- Is there any [sports](event_name) [event](event_identifier)?
+- Is there any [violin](event_name) [event](event_identifier)?
+- Is there any [standup comedy](event_name) [event](event_identifier)?
+- Is there any [tea dance](event_name) [event](event_identifier)?
+- Is there any [befriending](event_name) [event](event_identifier)?
+- Is there any [walking](event_name) [event](event_identifier)?
+- Is there any [exercise](event_name) [event](event_identifier)?
 
 ## intent:mid_utterance
 - can you tell me [the](spiltpoint)
@@ -111,14 +118,19 @@
 - I really think [of](spiltpoint)
 - I am planning to [go](spiltpoint)
 
-## lookup:splitpoint
-- the
-- to
-- of
-- go
-- about
-- me
-
+## intent:event_number_intent
+- [first](num_identifier) one
+- [second](num_identifier) one
+- [third](num_identifier) one
+- [fourth](num_identifier) one
+- [fifth](num_identifier) one
+- [sixth](num_identifier) one
+- [seventh](num_identifier) one
+- [1](num_identifier)
+- [2](num_identifier)
+- [3](num_identifier)
+- [4](num_identifier)
+- [5](num_identifier)
 
 ## intent:event_location_intent
 - [in](location_identifier) [edinburgh](event_location)
@@ -221,20 +233,15 @@
 - see you around
 - see you later
 
-## intent:affirm
-- yes
-- indeed
-- of course
-- that sounds good
-- correct
-
-## intent:deny
-- no
-- never
-- I don't think so
-- don't like that
-- no way
-- not really
+## intent:mood_great
+- good
+- not bad
+- I am ok
+- very good
+- nice
+- terible
+- fine
+- alright
 
 ## synonym:event_identifier
 - event
@@ -256,3 +263,9 @@ event_cost_list.txt
 
 ## lookup:event_identifier
 event_identifier_list.txt
+
+## lookup:num_identifier
+number_identifier_list.txt
+
+## lookup:splitpoint
+splitpoint_list.txt
