@@ -52,8 +52,12 @@ class ActionEventDetails(Action):
         event_number = tracker.get_slot("num_identifier")
         event_session_slot = tracker.get_slot("time_session")
 
-        if event_result and len(event_result) > 0 and event_yes_slot:
-            print("herer")
+        if (
+            event_result
+            and len(event_result) == 1
+            and event_yes_slot
+            and not event_no_slot
+        ):
             dispatcher.utter_message("OK i will book the event for you. ")
             dispatcher.utter_message("Would you be interested in any other events")
             return [AllSlotsReset()]
@@ -72,7 +76,6 @@ class ActionEventDetails(Action):
         if event_no_slot:
             dispatcher.utter_message("OK Have a Nice day, Bye Bye")
             return [AllSlotsReset()]
-        print(event_session_slot)
         event_params = {
             "event_name": event_name_slot,
             "location_name": event_location_slot,
@@ -100,11 +103,9 @@ class ActionEventDetails(Action):
             dispatcher.utter_message(
                 "Can you tell me on which day you are looking for?"
             )
-        else:
+        elif not event_result:
             dispatcher.utter_message(
-                "OK I will search the {} event for you".format(
-                    event_name_slot, event_location_slot
-                )
+                "OK I will search the {} event for you".format(event_name_slot)
             )
             response = requests.get(
                 "http://localhost:3000/events", params=event_params

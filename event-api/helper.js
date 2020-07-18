@@ -55,7 +55,7 @@ function trimString(str) {
 
 function filterDataByDayTime(data, dateStr, daySess) {
     const daySession = translateDaySession(daySess);
-    const allowedDays = getAllowedDates(dateStr)
+    const allowedDays = getAllowedDays(dateStr)
     let filterdData = []
     if (data.length) {
         data.forEach(eventData => {
@@ -76,7 +76,7 @@ function filterDataByDayTime(data, dateStr, daySess) {
 }
 
 
-function getAllowedDates(dateStr) {
+function getAllowedDays(dateStr) {
     if (!dateStr) {
         return [0, 1, 2, 3, 4, 5, 6];
     }
@@ -116,13 +116,13 @@ function getAllowedDates(dateStr) {
             return [0, 6]
             break;
         case 'today':
-            return [moment().day(moment().isoWeekday())];
+            return [moment().day()];
             break;
         case 'tomorrow':
-            return [moment().day(moment().isoWeekday() + 1)];
+            return [(moment().day() + 1) % 7];
             break;
         case 'dayaftertomorrow':
-            return [moment().day(moment().isoWeekday() + 2)];
+            return [(moment().day() + 2) % 7];
             break;
         default:
             return [moment().day()]
