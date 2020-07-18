@@ -10,10 +10,9 @@ exports.getEvents = async (param) => {
     const locName = translateLocName(param.location_name);
     const type = param.type ? param.type : '%';
     const payType = param.pay_type ? param.pay_type : '%';
-    const dateRange = translateDate(param.event_datetime);
-    const daySession = translateDaySession(param.event_session);
-    console.log(daySession)
-    let data = await getEventsDataFromDb(eName, locName, type, payType, dateRange);
+
+    let dataFromDb = await getEventsDataFromDb(eName, locName, type, payType);
+    const data = filterDataByDayTime(dataFromDb, param.event_datetime, param.event_session);
     let event_res_text = []
     let result = true;
     if (data.length && data.length > 0) {
@@ -22,17 +21,9 @@ exports.getEvents = async (param) => {
             const month = dateTime.toLocaleString('default', {
                 month: 'long'
             });
-            if (daySession != null) {
-                console.log(25)
-                console.log(dateTime.getHours())
-                if (daySession[0] <= dateTime.getHours() && daySession[1] >= dateTime.getHours()) {
-                    event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
-                    event_res_text.push(event_desc)
-                }
-            } else {
-                event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
-                event_res_text.push(event_desc)
-            }
+            event_desc = `${eventData.name} event on ${dateTime.getDate()} ${month} in ${eventData.address}, ${eventData.city} at ${dateTime.getHours()} hour and ${dateTime.getMinutes()} minutes`;
+            event_res_text.push(event_desc)
+
         });
     } else {
         event_res_text = []
@@ -54,7 +45,7 @@ exports.addEvent = async (param) => {
     const type = param.type ? param.type : 'online';
     const payType = param.pay_type ? param.pay_type : 'free';
     const cost = param.cost ? param.cost : 0;
-    const dateTime = param.date_time ? moment(param.date_time, "D/M/YYYY H:mm").unix() : Date.now();
+    const dateTime = param.date_time ? moment(param.date_time, "D/M/YYYY H:mm").unix() : moment().unix();
     return await insertEvent(eId, eLocId, type, payType, cost, dateTime);
 }
 
@@ -62,107 +53,81 @@ function trimString(str) {
     return str.replace(/\s+/g, '').toLowerCase();
 }
 
-function translateDate(dateStr) {
-    if (!dateStr) {
-        return null;
+function filterDataByDayTime(data, dateStr, daySess) {
+    const daySession = translateDaySession(daySess);
+    const allowedDays = getAllowedDates(dateStr)
+    let filterdData = []
+    if (data.length) {
+        data.forEach(eventData => {
+            const dateTime = new Date(eventData.datetime)
+            const day = dateTime.getDay()
+            if (allowedDays.includes(day)) {
+                if (daySession != null) {
+                    if (daySession[0] <= dateTime.getHours() && daySession[1] >= dateTime.getHours()) {
+                        filterdData.push(eventData)
+                    }
+                } else {
+                    filterdData.push(eventData)
+                }
+            }
+        });
     }
+    return filterdData
+}
+
+
+function getAllowedDates(dateStr) {
+    if (!dateStr) {
+        return [0, 1, 2, 3, 4, 5, 6];
+    }
+    let allowedDays = []
     dateStr = trimString(dateStr);
     const anyDay = ["anyday", "anydate", "alldate", "allday"];
     if (anyDay.includes(dateStr)) {
-        return null
+        return [0, 1, 2, 3, 4, 5, 6];
     }
 
-    let startday = moment().isoWeekday()
-    let endday = moment().isoWeekday()
-    console.log('startday', startday)
     switch (dateStr) {
         case 'monday':
-            startday = moment().isoWeekday() > 1 ? moment().day(8) : moment().day(1);
-            endday = startday;
+            return [1];
             break;
         case 'tuesday':
-            startday = moment().isoWeekday() > 2 ? moment().day(9) : moment().day(2);
-            endday = startday;
+            return [2];
             break;
         case 'wednesday':
-            startday = moment().isoWeekday() > 3 ? moment().day(10) : moment().day(3);
-            endday = startday;
+            return [3];
             break;
         case 'thursday':
-            startday = moment().isoWeekday() > 4 ? moment().day(11) : moment().day(4);
-            endday = startday;
+            return [4];
             break;
         case 'friday':
-            startday = moment().isoWeekday() > 5 ? moment().day(12) : moment().day(5);
-            endday = startday;
+            return [5];
             break;
         case 'saturday':
-            startday = moment().isoWeekday() > 6 ? moment().day(13) : moment().day(6);
-            endday = startday;
+            return [6]
             break;
         case 'sunday':
-            startday = moment().isoWeekday() > 7 ? moment().day(14) : moment().day(7);
-            endday = startday;
+            return [0]
             break;
         case 'weekday':
-            startday = moment().day(moment().isoWeekday());
-            endday = moment().day(5);
+            return [1, 2, 3, 4, 5]
             break;
         case 'weekend':
-            startday = moment().day(6);
-            endday = moment().day(7);
+            return [0, 6]
             break;
         case 'today':
-            startday = moment().day(moment().isoWeekday());
-            endday = startday;
+            return [moment().day(moment().isoWeekday())];
             break;
         case 'tomorrow':
-            startday = moment().day(moment().isoWeekday() + 1);
-            endday = startday;
+            return [moment().day(moment().isoWeekday() + 1)];
             break;
         case 'dayaftertomorrow':
-            startday = moment().day(moment().isoWeekday() + 2);
-            endday = startday;
+            return [moment().day(moment().isoWeekday() + 2)];
             break;
         default:
-            startday = moment().day()
-            endday = startday
+            return [moment().day()]
             break;
     }
-
-    fromTime = getStart(startday)
-    toTime = getEnd(endday)
-    console.log(92, fromTime, toTime)
-    console.log('fromtime ', moment.unix(fromTime).local());
-    console.log('totime ', moment.unix(toTime).local());
-    return [fromTime, toTime]
-}
-
-
-function getStart(startday) {
-    console.log(startday)
-    fromTime = moment(startday, 'D/M/YYYY');
-    fromTime.set({
-        hour: 0,
-        minute: 0,
-        second: 0
-    });
-    console.log(107, fromTime)
-    console.log(107, fromTime.unix())
-    return fromTime.unix()
-}
-
-
-function getEnd(dateStr) {
-    toTime = moment(dateStr, 'D/M/YYYY');
-    toTime.set({
-        hour: 23,
-        minute: 59,
-        second: 59
-    });
-    console.log(127, toTime)
-    console.log(127, toTime.unix())
-    return toTime.unix()
 }
 
 function translateName(ename) {
@@ -220,5 +185,4 @@ function translateDaySession(daySession) {
             break;
     }
     return [starttime, endtime];
-
 }
