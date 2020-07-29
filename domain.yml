@@ -15,6 +15,8 @@ actions:
 - utter_feedback
 - utter_welcome
 - utter_mood_response
+- utter_ask_mid_utterance
+- utter_ask_event_interest
 entities:
 - event_category
 - event_cost
@@ -87,7 +89,7 @@ responses:
   - text: Do you prefer to take part in any social events around you? For eg., music, coffee morning, yoga?
   - text: Some social events are happening around, do you wish to take part? For eg., coffee morning, music, yoga
   utter_feedback:
-  - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLSfVMR2ebdYS36cIZ9HKkCy9ze8_Y3g71u6lxSn-r3-5fttqyg/viewform
+  - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLScCgj324BLzCnjfzokAa-JNtFJa1q9N9S8RoH4JuHatvG1pdQ/viewform
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
