@@ -117,6 +117,40 @@
 - I want to know [about the](spiltpoint)
 - I really think [of](spiltpoint)
 - I am planning to [go](spiltpoint)
+- i want to [find](splitpoint)
+- i want [to](splitpoint) go to yoga on
+- I am looking for a lunch meeting on tuesday [in](splitpoint) 
+- is there a place [to](splitpoint) do 
+- i am looking for a lunch meeting [on](splitpoint)
+- can i meet on tuesday [for](splitpoint)
+- i want to find a place [to](splitpoint) do
+- I wanted to do yoga [on](splitpoint)
+- I need to find a yoga place [in](splitpoint)
+- Is there a nice place for coffee meetings [in](splitpoint) 
+- can I find a place for yoga [at](splitpoint)
+- Looking for a yoga place [in](splitpoint) 
+- I want to meet up [to] do(splitpoint)
+- Can you tell me [about](splitpoint)
+- i wish to attend [the](splitpoint) 
+- i wish to know [about the](splitpoint)
+- i would love to go [to](splitpoint)
+- i excited to attend any [of](splitpoint) 
+- i planned to go [to](splitpoint)
+- I am thinking about any standup comdey [on](splitpoint) 
+- i wish to know about [the](splitpoint)
+- could you please tell me [the](splitpoint)
+- could you please list [the](splitpoint)
+- i wish to do a tea dance [in](splitpoint)
+- I am looking for a tea dance [on](splitpoint)
+- would you suggest any [of](splitpoint) the
+- wolud you please tell me [the](splitpoint)
+- would you list me [the](splitpoint)
+- can i know about [the](splitpoint)
+- i am looking for the standup comedy [on](splitpoint)
+- i am looking for the tea dance [on](splitpoint)
+- i am looking for the music event [in](splitpoint)
+- i need information about yoga event [on](splitpoint)
+- i am interested to attend any event [on](splitpoint) 
 
 ## intent:event_number_intent
 - [first](num_identifier) one
@@ -174,6 +208,7 @@
 - [around](location_identifier) [leith](event_location)
 - [at](location_identifier) [leith](event_location)
 
+
 ## intent:event_cost_intent
 - [free](event_cost) [event](event_identifier)
 - [free](event_cost) one
@@ -188,11 +223,10 @@
 - [direct](event_type) [event](event_identifier)
 - [live](event_type) [event](event_identifier)
 - [virtual](event_type) [event](event_identifier)
-- [both](event_type)
 
 ## intent:event_datetime_intent
-- [monday](event_date_time) 
-- [tuesday](event_date_time) 
+- [monday](event_date_time)
+- [tuesday](event_date_time)
 - [wednesday](event_date_time)
 - [thursday](event_date_time)
 - [friday](event_date_time)
