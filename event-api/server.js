@@ -4,7 +4,10 @@ const app = express()
 const {
     getEvents,
     addEvent
-} = require('./helper')
+} = require('./event-data/eventHelper')
+const {
+    getLogStats
+} = require('./stat-data/statHelper')
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -17,6 +20,12 @@ app.get('/', (req, res) => {
 app.get('/events', async (req, res) => {
     let event_res = {}
     const data = await getEvents(req.query)
+    res.status(200).json(data)
+})
+
+app.get('/log-stats', async (req, res) => {
+    let event_res = {}
+    const data = await getLogStats(req.query)
     res.status(200).json(data)
 })
 

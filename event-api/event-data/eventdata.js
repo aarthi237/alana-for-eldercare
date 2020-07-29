@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./event_latest_data.db');
+const db = new sqlite3.Database('./event-data/event_latest_data.db');
 const moment = require('moment')
 
 exports.getEventsDataFromDb = async (eName, locName, type, payType) => {
@@ -14,7 +14,7 @@ exports.getEventsDataFromDb = async (eName, locName, type, payType) => {
     // }
     try {
         console.log(sql)
-        const rows = await get_async(sql);
+        const rows = await get_async_event(sql);
         console.log(rows);
         return Array.isArray(rows) ? rows : [rows]
     } catch (e) {
@@ -38,7 +38,7 @@ exports.insertEvent = async (eventId, eventLocId, type, payType, cost, dateTime)
     });
 }
 
-get_async = (sql) => {
+const get_async_event = (sql) => {
     return new Promise((resolve, reject) => {
         db.all(sql, [], (err, row) => {
             if (err) {
