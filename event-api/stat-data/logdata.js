@@ -5,7 +5,7 @@ exports.getLogDataFromDb = async (senderId) => {
     let sql = `select * from events where sender_id LIKE "${senderId}" order by timestamp`;
 
     try {
-        console.log(sql)
+        //console.log(sql)
         const rows = await get_async(sql);
         //console.log(rows);
         return Array.isArray(rows) ? rows : [rows]
@@ -14,6 +14,22 @@ exports.getLogDataFromDb = async (senderId) => {
         return [];
     }
 };
+
+
+exports.getUserSessions = async () => {
+    let sql = `select DISTINCT sender_id from events order by timestamp`;
+
+    try {
+        //console.log(sql)
+        const rows = await get_async(sql);
+        //console.log(rows);
+        return Array.isArray(rows) ? rows : [rows]
+    } catch (e) {
+        console.log(e)
+        return [];
+    }
+};
+
 
 
 const get_async = (sql) => {

@@ -6,7 +6,8 @@ const {
     addEvent
 } = require('./event-data/eventHelper')
 const {
-    getLogStats
+    getLogStats,
+    getAllLogStats
 } = require('./stat-data/statHelper')
 
 app.use(bodyParser.urlencoded({
@@ -25,7 +26,14 @@ app.get('/events', async (req, res) => {
 
 app.get('/log-stats', async (req, res) => {
     let event_res = {}
-    const data = await getLogStats(req.query)
+    let param = req.query
+    const data = await getLogStats(param.sender_id)
+    res.status(200).json(data)
+})
+
+app.get('/all-log', async (req, res) => {
+    let event_res = {}
+    const data = await getAllLogStats()
     res.status(200).json(data)
 })
 

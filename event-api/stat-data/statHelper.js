@@ -1,15 +1,31 @@
 const {
     getLogDataFromDb,
+    getUserSessions
 } = require('./logdata')
 const moment = require('moment')
 
-exports.getLogStats = async (param) => {
-    console.log(param);
-
-    let dataFromDb = await getLogDataFromDb(param.sender_id);
+async function getLogStats(sender_id) {
+    console.log(sender_id)
+    let dataFromDb = await getLogDataFromDb(sender_id);
     return processLogs(dataFromDb);
 };
 
+
+async function getAllLogStats() {
+    let dataUser = await getUserSessions();
+    let allData = []
+
+    for (const user of dataUser) {
+        const userData = await getLogStats(user.sender_id)
+        allData.push({
+            "sender_id": user.sender_id,
+            "stat_data": userData
+        })
+    }
+    return {
+        "all_logs": allData
+    }
+};
 
 function processLogs(data) {
     responsetimes = []
@@ -77,7 +93,7 @@ function getAverage(resTimes) {
 }
 
 function checkEventSearchStart(botText) {
-    console.log(botText)
+    // console.log(botText)
     const whichEvent = ["Would you like to take part in any social events around you?",
         "Are you interested in attending any social events around you? ",
         "Do you prefer to take part in any social events around you? ",
@@ -89,10 +105,13 @@ function checkEventSearchStart(botText) {
 }
 
 function checkEventSearchEnd(botText) {
-    console.log(botText)
+    //console.log(botText)
     const whichEvent = ["Would you be interested in any other events",
         "would you like to search for a different event"
     ]
     const found = whichEvent.find(e => botText.includes(e))
     return found ? true : false;
 }
+
+exports.getAllLogStats = getAllLogStats
+exports.getLogStats = getLogStats
