@@ -1,24 +1,26 @@
 actions:
 - action_event_details
 - action_utter_default
+- utter_ask_event_cancel
+- utter_ask_event_confirm
+- utter_ask_event_interest
 - utter_ask_event_location
 - utter_ask_event_name
 - utter_ask_event_online
 - utter_ask_event_pay_type
 - utter_ask_event_time
-- utter_ask_event_confirm
-- utter_ask_event_cancel
+- utter_ask_mid_utterance
 - utter_did_that_help
+- utter_feedback
 - utter_goodbye
 - utter_greet
 - utter_happy
 - utter_iamabot
-- utter_feedback
-- utter_welcome
 - utter_mood_response
 - utter_ask_mid_utterance
 - utter_ask_event_interest
 - utter_default
+- utter_welcome
 entities:
 - event_category
 - event_cost
@@ -30,28 +32,44 @@ entities:
 - event_type
 - event_yes
 - location_identifier
-- thank
-- spiltpoint
 - num_identifier
+- spiltpoint
+- thank
 - time_session
 intents:
 - events
-- event_type_intent
+- greet
+- mid_utterance
+- event_number_intent
+- mood_great
+- event_datetime_intent
 - event_location_intent
+- event_confirm
+- event_type_intent
 - event_cost_intent
 - date[preferred_date]
 - date_time
-- event_datetime_intent
-- event_confirm
 - event_cancel
 - thank
-- greet
 - goodbye
-- mood_great
-- mid_utterance
-- event_number_intent
 - mood_check
 responses:
+  utter_ask_event_cancel:
+  - text: Would like to look for some other events
+  - text: Do you wish to search for some other events?
+  - text: Do you have any other preference of events to attend?
+  - text: Would you be interested in any other events?
+  utter_ask_event_confirm:
+  - text: Shall I book a place for you?
+  utter_ask_event_interest:
+  - text: Would you like to take part in any social events around you? for eg., yoga,
+      music, coffee morning
+  - text: Are you interested in attending any social events around you? For eg., yoga,
+      coffee morning, music?
+  - text: Do you prefer to take part in any social events around you? For eg., music,
+      coffee morning, yoga?
+  - text: Some social events are happening around, do you wish to take part? For eg.,
+      coffee morning, music, yoga
   utter_ask_event_location:
   - text: Could you please tell me your preferred event location
   - text: Can you provide the location?
@@ -71,18 +89,12 @@ responses:
   - text: Do you prefer online or direct events?
   - text: Please tell me you want online or direct events
   - text: You wish to attend online or direct events?
-  - text: Let me know which type of events you wish to attend either online or direct events?
+  - text: Let me know which type of events you wish to attend either online or direct
+      events?
   utter_ask_event_pay_type:
   - text: Do you prefer free or paid event?
   utter_ask_event_time:
   - text: Could you please tell me the event date time
-  utter_ask_event_confirm:
-  - text: Shall I book a place for you?  
-  utter_ask_event_cancel:
-  - text: Would like to look for some other events
-  - text: Do you wish to search for some other events?
-  - text: Do you have any other preference of events to attend?
-  - text: Would you be interested in any other events?
   utter_ask_mid_utterance:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_ask_event_interest:
@@ -92,22 +104,26 @@ responses:
   - text: Some social events are happening around, do you wish to take part? 
   utter_feedback:
   - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLScCgj324BLzCnjfzokAa-JNtFJa1q9N9S8RoH4JuHatvG1pdQ/viewform
+  - text: You want me to tell you about the upcoming events or the events you have
+      already registered for?
   utter_did_that_help:
   - text: Did that help you?
+  utter_feedback:
+  - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLScCgj324BLzCnjfzokAa-JNtFJa1q9N9S8RoH4JuHatvG1pdQ/viewform
   utter_goodbye:
   - text: Bye, have a nice day
   utter_greet:
   - text: Hey! How are you today?
   utter_happy:
   - text: Great, carry on!
-  utter_welcome:
-  - text: You are welocme.
-  utter_mood_response:
-  - text: I am great. Thank you.
   utter_iamabot:
   - text: I am a event bot, powered by Rasa.
   utter_default:
   - text: Sorry I don't understand
+  utter_mood_response:
+  - text: I am great. Thank you.
+  utter_welcome:
+  - text: You are welocme.
 session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 60
@@ -120,14 +136,14 @@ slots:
     type: text
   event_name:
     type: text
-  event_type:
-    type: text
-  event_yes:
-    type: text
   event_no:
     type: text
   event_result:
     type: list
+  event_type:
+    type: text
+  event_yes:
+    type: text
   num_identifier:
     type: text
   time_session:

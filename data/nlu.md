@@ -108,6 +108,11 @@
 - Is there any [befriending](event_name) [event](event_identifier)?
 - Is there any [walking](event_name) [event](event_identifier)?
 - Is there any [exercise](event_name) [event](event_identifier)?
+- may be [yoga](event_name)
+- [online](event_type) [free](event_cost) [events]{"entity": "event_identifier", "value": "event_identifier"} please
+- coffee moning
+- [coffee morning](event_name)
+- [standup comedy](event_name) [direct](event_type) [free](event_cost) [events]{"entity": "event_identifier", "value": "event_identifier"} on saturday in [edinburgh](event_location)
 
 ## intent:mid_utterance
 - can you tell me [the](spiltpoint)
@@ -119,24 +124,24 @@
 - I am planning to [go](spiltpoint)
 - i want to [find](splitpoint)
 - i want [to](splitpoint) go to yoga on
-- I am looking for a lunch meeting on tuesday [in](splitpoint) 
-- is there a place [to](splitpoint) do 
+- I am looking for a lunch meeting on tuesday [in](splitpoint)
+- is there a place [to](splitpoint) do
 - i am looking for a lunch meeting [on](splitpoint)
 - can i meet on tuesday [for](splitpoint)
 - i want to find a place [to](splitpoint) do
 - I wanted to do yoga [on](splitpoint)
 - I need to find a yoga place [in](splitpoint)
-- Is there a nice place for coffee meetings [in](splitpoint) 
+- Is there a nice place for coffee meetings [in](splitpoint)
 - can I find a place for yoga [at](splitpoint)
-- Looking for a yoga place [in](splitpoint) 
+- Looking for a yoga place [in](splitpoint)
 - I want to meet up [to] do(splitpoint)
 - Can you tell me [about](splitpoint)
-- i wish to attend [the](splitpoint) 
+- i wish to attend [the](splitpoint)
 - i wish to know [about the](splitpoint)
 - i would love to go [to](splitpoint)
-- i excited to attend any [of](splitpoint) 
+- i excited to attend any [of](splitpoint)
 - i planned to go [to](splitpoint)
-- I am thinking about any standup comdey [on](splitpoint) 
+- I am thinking about any standup comdey [on](splitpoint)
 - i wish to know about [the](splitpoint)
 - could you please tell me [the](splitpoint)
 - could you please list [the](splitpoint)
@@ -150,7 +155,26 @@
 - i am looking for the tea dance [on](splitpoint)
 - i am looking for the music event [in](splitpoint)
 - i need information about yoga event [on](splitpoint)
-- i am interested to attend any event [on](splitpoint) 
+- i am interested to attend any event [on](splitpoint)
+- i would be nice if I go [to](splitpoint)
+- I am eagerly looking on [the](splitpoint)
+- is there any of [the](splitpoint)
+- i am thinking to attend for [the](splitpoint)
+- I am interested in [the](splitpoint)
+- i really want [to](splitpoint) go to
+- what are [the](splitpoint)
+- I woonder if any [of](splitpoint) the
+- I am planning to do [some](splitpoint)
+- list me [some](splitpoint)
+- i am looking for [some](splitpoint)
+- I am intersted in [some](splitpoint)
+- I wish to attend [some](splitpoint)
+- is there [any](splitpoint)
+- i am looking [for](splitpoint)
+- iam searching [for](splitpoint)
+- i am searching [for](splitpoint) some
+- i would love to attend [some](splitpoint)
+- i am looking for [tea](event_name) dance online [free](event_cost) [event]{"entity": "event_identifier", "value": "event_identifier"} on friday afternoon in [glasgow](event_location)
 
 ## intent:event_number_intent
 - [first](num_identifier) one
@@ -165,6 +189,7 @@
 - [3](num_identifier)
 - [4](num_identifier)
 - [5](num_identifier)
+- [second](num_identifier)
 
 ## intent:event_location_intent
 - [in](location_identifier) [edinburgh](event_location)
@@ -207,7 +232,7 @@
 - [near](location_identifier) [leith](event_location)
 - [around](location_identifier) [leith](event_location)
 - [at](location_identifier) [leith](event_location)
-
+- iam looking around [glasgow](event_location)
 
 ## intent:event_cost_intent
 - [free](event_cost) [event](event_identifier)
@@ -223,6 +248,7 @@
 - [direct](event_type) [event](event_identifier)
 - [live](event_type) [event](event_identifier)
 - [virtual](event_type) [event](event_identifier)
+- [direct](event_type) [paid](event_cost) [events]{"entity": "event_identifier", "value": "event_identifier"}
 
 ## intent:event_datetime_intent
 - [monday](event_date_time)
@@ -246,13 +272,14 @@
 - [tuesday](event_date_time) [afternoon](time_session)
 - [wednesday](event_date_time) [evening](time_session)
 - [thursday](event_date_time) [noon](time_session)
-- [friday](event_date_time)
 - [mornings](time_session)
 - [evenings](time_session)
 - [morning](time_session)
 - [afternoon](time_session)
 - [evening](time_session)
 - [noon](time_session)
+- [wednesday](event_date_time) [morning](time_session)
+- [sunday](event_date_time) [evening](time_session)
 
 ## intent:event_confirm
 - [yes](event_yes)
@@ -262,6 +289,9 @@
 - [register please](event_yes)
 - [register](event_yes)
 - [yes please](event_yes)
+- [yes please](event_yes)
+- [ok](event_yes)
+- [sure](event_yes)
 
 ## intent:event_cancel
 - [cancel](event_no)
@@ -290,6 +320,9 @@
 - terible
 - fine
 - alright
+- i am good
+- i am great
+- amazing
 
 ## intent:mood_check
 - how are you
@@ -305,22 +338,22 @@
 - activities
 
 ## lookup:event_name
-event_name_list.txt
+  event_name_list.txt
 
 ## lookup:event_location
-event_location_list.txt
+  event_location_list.txt
 
 ## lookup:event_type
-event_type_list.txt
+  event_type_list.txt
 
 ## lookup:event_cost
-event_cost_list.txt
+  event_cost_list.txt
 
 ## lookup:event_identifier
-event_identifier_list.txt
+  event_identifier_list.txt
 
 ## lookup:num_identifier
-number_identifier_list.txt
+  number_identifier_list.txt
 
 ## lookup:splitpoint
-splitpoint_list.txt
+  splitpoint_list.txt

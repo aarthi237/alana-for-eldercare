@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./event-data/event_latest_data.db');
+const db = new sqlite3.Database('./event_latest_data.db');
 const moment = require('moment')
 
 exports.getEventsDataFromDb = async (eName, locName, type, payType) => {
