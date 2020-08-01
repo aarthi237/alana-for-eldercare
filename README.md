@@ -5,18 +5,24 @@ To avoid library dependency issue and to use the latest version of Rasa NLU, Doc
 Following command has used to train and run the rasa
 
 docker run -it -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full train
+
 docker run -it --net="host" -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full shell
+
 docker run -it --net="host" -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full run
+
 docker run -it --net="host" -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full run actions
 
 ## Steps to Start Rasa
 1. Open terminal and run rasa core and actions using following command
 
 $docker run -it --net="host" -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full run
+
 $docker run -it --net="host" -u 1000:1000 -v $(pwd):/app rasa/rasa:latest-full run actions
 
 2. Go to dir event_api and run following command to start event api
+
 $npm install
+
 $npm run start
 
 ## Steps to Integrate with Telegram
