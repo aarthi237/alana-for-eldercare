@@ -18,7 +18,6 @@
 ## say goodbye
 * goodbye
   - utter_goodbye
-  - utter_feedback
 
 ## any event
 * events

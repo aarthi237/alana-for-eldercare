@@ -63,22 +63,25 @@ fun query(question: String) = state {
         /* Call to WolframAlpha API made in an anynomous substate (https://docs.furhat.io/flow/#calling-anonymous-states)
          to allow our timeout below to stop the call if it takes to long. Note that you explicitly has to cast the result to a String.
           */
+        println(question)
         val rootObject= JSONObject()
         rootObject.put("sender","test123")
         rootObject.put("message",question)
         val response = call {
             //khttp.get(query).text
-            post(url = BASE_URL, data = "{\"sender\":\"test123\", \"message\": \"+$question+\"}").text
+            post(url = BASE_URL, data = "{\"sender\":\"test1234\", \"message\": \"$question\"}").text
         } as String
 
-        println(response)
+        //println(response)
 
         val obj = JSONArray(response)
         //println(obj)
         var res = ""
         for (i in 0 until obj.length()) {
             val item = obj.getJSONObject(i)
-            res += "  " + item["text"]
+            res += " ${furhat.voice.pause("2000ms")} " + item["text"]
+//            furhat.say(item["text"])
+//            furhat.say( "${furhat.voice.pause("1000ms")} ")
             println(item["text"])
         }
         // Reply to user depending on the returned response

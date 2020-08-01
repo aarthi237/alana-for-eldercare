@@ -2,6 +2,7 @@ package furhatos.app.wolframalpha.flow
 
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.PollyVoice
+import furhatos.flow.kotlin.voice.Voice
 import furhatos.util.*
 
 val defaultVoice = PollyVoice("Matthew")
@@ -10,7 +11,7 @@ val idle: State = state {
     init {
         println("idleinit")
         furhat.setTexture("male")
-        furhat.voice = defaultVoice
+        furhat.voice = Voice(name = "Salli-Neural",gender = Gender.MALE, language = Language.ENGLISH_US, pitch = "high", rate = 0.8)
         if (users.count > 0) {
             furhat.attend(users.random)
             goto(start)
