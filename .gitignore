@@ -1,1 +1,7 @@
 node_modules
+build
+logs
+.gradle
+.idea
+*tar.gz
+.vscode
