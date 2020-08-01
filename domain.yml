@@ -1,5 +1,6 @@
 actions:
 - action_event_details
+- action_utter_default
 - utter_ask_event_location
 - utter_ask_event_name
 - utter_ask_event_online
@@ -17,6 +18,7 @@ actions:
 - utter_mood_response
 - utter_ask_mid_utterance
 - utter_ask_event_interest
+- utter_default
 entities:
 - event_category
 - event_cost
@@ -84,10 +86,10 @@ responses:
   utter_ask_mid_utterance:
   - text: You want me to tell you about the upcoming events or the events you have already registered for?
   utter_ask_event_interest:
-  - text: Would you like to take part in any social events around you? for eg., yoga, music, coffee morning
-  - text: Are you interested in attending any social events around you? For eg., yoga, coffee morning, music?
-  - text: Do you prefer to take part in any social events around you? For eg., music, coffee morning, yoga?
-  - text: Some social events are happening around, do you wish to take part? For eg., coffee morning, music, yoga
+  - text: Would you like to take part in any social events around you? 
+  - text: Are you interested in attending any social events around you? 
+  - text: Do you prefer to take part in any social events around you? 
+  - text: Some social events are happening around, do you wish to take part? 
   utter_feedback:
   - text: Could you please fill your experience in the feedback form? https://docs.google.com/forms/d/e/1FAIpQLScCgj324BLzCnjfzokAa-JNtFJa1q9N9S8RoH4JuHatvG1pdQ/viewform
   utter_did_that_help:
@@ -104,6 +106,8 @@ responses:
   - text: I am great. Thank you.
   utter_iamabot:
   - text: I am a event bot, powered by Rasa.
+  utter_default:
+  - text: Sorry I don't understand
 session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 60

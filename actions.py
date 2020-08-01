@@ -15,9 +15,9 @@ from rasa_sdk.events import SlotSet, AllSlotsReset
 import requests
 
 
-class ActionHelloWorld(Action):
+class ActionUtterDefault(Action):
     def name(self) -> Text:
-        return "action_hello_world"
+        return "action_utter_default"
 
     def run(
         self,
@@ -26,7 +26,7 @@ class ActionHelloWorld(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hello World!")
+        dispatcher.utter_message(text="Sorry i dont understand")
 
         return []
 
@@ -58,24 +58,46 @@ class ActionEventDetails(Action):
             and event_yes_slot
             and not event_no_slot
         ):
-            dispatcher.utter_message("OK i will book the event for you. ")
-            dispatcher.utter_message("Would you be interested in any other events")
-            return [AllSlotsReset()]
+            if event_yes_slot:
+                dispatcher.utter_message("OK i will note down")
+                return [AllSlotsReset()]
+            elif event_no_slot:
+                dispatcher.utter_message("Would you be interested in any other events")
+                return [AllSlotsReset()]
+            else:
+                dispatcher.utter_message("OK i will book the event for you. ")
+                dispatcher.utter_message(
+                    "would you like to set notification for your booked event"
+                )
+            return []
 
         if event_result and len(event_result) > 0 and event_no_slot:
             dispatcher.utter_message("OK Are you looking for any other event?")
             return [AllSlotsReset()]
 
         if event_result and len(event_result) > 1 and event_number:
-            dispatcher.utter_message(
-                "OK i will book the {} event for you".format(event_number)
-            )
-            dispatcher.utter_message("Would you be interested in any other events")
-            return [AllSlotsReset()]
+            if event_yes_slot:
+                dispatcher.utter_message("OK i will note down")
+                return [AllSlotsReset()]
+            elif event_no_slot:
+                dispatcher.utter_message("Would you be interested in any other events")
+                return [AllSlotsReset()]
+            else:
+                dispatcher.utter_message(
+                    "OK i will book the {} event for you".format(event_number)
+                )
+                dispatcher.utter_message(
+                    "would you like to set notification for your booked event"
+                )
+            return []
 
         if event_no_slot:
-            dispatcher.utter_message("OK Have a Nice day, Bye Bye")
+            dispatcher.utter_message(
+                "OK. if you are looking for any social event in future please let me know. I will help you to search event"
+            )
+            dispatcher.utter_message("Have a Nice day, Bye Bye")
             return [AllSlotsReset()]
+
         event_params = {
             "event_name": event_name_slot,
             "location_name": event_location_slot,
@@ -89,19 +111,19 @@ class ActionEventDetails(Action):
 
         if not event_name_slot:
             dispatcher.utter_message(
-                "Which event you wish to attend? for eg., yoga, music, coffee morning"
+                "Awesome Which event you wish to attend? for example yoga, music, coffee morning"
             )
         elif not event_type_slot:
-            dispatcher.utter_message("Are you looking for online or direct event?")
+            dispatcher.utter_message("OK Are you looking for online or direct event?")
         elif not event_location_slot and event_type_slot == "direct":
             dispatcher.utter_message(
-                "Could you please tell me which city you are looking for? for eg., edinburgh, glasgow, livingston"
+                "Could you please tell me which city you are looking for? for example edinburgh, glasgow, livingston"
             )
         elif not event_cost_slot:
-            dispatcher.utter_message("Are you looking for free or paid event?")
+            dispatcher.utter_message("OK Are you looking for free or paid event?")
         elif not event_date_time_slot and not event_session_slot:
             dispatcher.utter_message(
-                "Can you tell me on which day you are looking for?"
+                "OK Can you tell me on which day you are looking for?"
             )
         elif not event_result:
             dispatcher.utter_message(
@@ -125,7 +147,7 @@ class ActionEventDetails(Action):
                     i = i + 1
                 if (len(response["event_res_text"])) > 1:
                     dispatcher.utter_message(
-                        "Could you please tell me the option to book the events. for eg., first, second or third"
+                        "Could you please tell me the option to book the events. for example first, second or third"
                     )
                 else:
                     dispatcher.utter_message("Do you want to book the event")
@@ -138,5 +160,5 @@ class ActionEventDetails(Action):
                     "would you like to search for a different event"
                 )
                 return [AllSlotsReset()]
-        return []
+        return [SlotSet("event_yes", None), SlotSet("event_no", None)]
 
